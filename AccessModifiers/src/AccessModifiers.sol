@@ -1,9 +1,14 @@
 // SPDX-License-Identifier: BUSL-1.1
 pragma solidity ^0.8.13;
 
+// Solution
+// changed access modifier from private to internal. Internal allows access to the contract
+// and all contracts that inherit it.
+
+
 // You may modify this contract
 contract Parent {
-    uint256 private _value;
+    uint256 internal _value; 
 }
 
 contract Child is Parent {
