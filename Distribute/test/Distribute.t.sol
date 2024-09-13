@@ -3,12 +3,35 @@ pragma solidity ^0.8.17;
 
 import "forge-std/Test.sol";
 import "../src/Distribute.sol";
+import "forge-std/console.sol";
 
 contract DistributeTest is Test {
     Distribute public distribute;
 
     function setUp() public {
         distribute = new Distribute{value: 4 ether}();
+    }
+
+    function testDistributeEtherUnequal() public {
+        distribute = new Distribute{value: 10 ether}();
+        assertEq(
+            address(distribute).balance,
+            10 ether,
+            "balance of distribute contract is not 4 ether"
+        );
+
+        address[] memory addresses = new address[](3);
+        addresses[0] = address(0xBab);
+        addresses[1] = address(0xBeb);
+        addresses[2] = address(0xBed);
+        
+        distribute.distributeEther(addresses);
+        
+        console.log(addresses[0].balance);
+        console.log(addresses[1].balance);
+        console.log(addresses[2].balance);
+        console.log(address(distribute).balance);
+
     }
 
     function testDistributeEther() public {

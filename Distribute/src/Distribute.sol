@@ -9,9 +9,15 @@ contract Distribute {
         2. Write your code in the `distributeEther` function.
     */
 
+    // With 10 ether split amongst 3 addresses, each address gets 3 ether and there is 1 ether left over in the initial contract due to floor division.
+
     constructor() payable {}
 
     function distributeEther(address[] memory addresses) public {
-        // your code here
+        uint256 distributionAmount = address(this).balance / addresses.length;
+        for (uint i = 0; i < addresses.length; i++) {
+            (bool sent, ) = addresses[i].call{value: distributionAmount}("");
+            require(sent, "Call to send Ether failed");
+        }
     }
 }
