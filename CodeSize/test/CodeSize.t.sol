@@ -3,12 +3,14 @@ pragma solidity ^0.8.17;
 
 import "forge-std/Test.sol";
 import "../src/CodeSize.sol";
+import "forge-std/console.sol";
 
 contract CodeSizeTest is Test {
     CodeSize public codeSize;
 
     function setUp() public {
         codeSize = new CodeSize();
+        // console.log(address(codeSize).code.length);
     }
 
     function testCodeSize() public {
