@@ -57,4 +57,8 @@ contract DistributeV2Test is Test {
     }
 }
 
-contract ReluctantReceiver {}
+contract ReluctantReceiver {
+    fallback() external payable {
+        revert("I don't want Ether");
+    }
+}
