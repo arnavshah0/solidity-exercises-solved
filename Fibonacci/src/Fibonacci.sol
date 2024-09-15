@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: BUSL-1.1
 pragma solidity ^0.8.13;
 
+// Solution: Fibonacci sequence: F(n) = F(n - 1) + F(n - 2)
+
 contract Fibonacci {
     /*
         This exercise assumes you understand what Fibonacci sequence is.
@@ -12,6 +14,15 @@ contract Fibonacci {
     */
 
     function fibonacci(uint256 _position) public view returns (uint256) {
-        // your code here
+        uint256 sum;
+        if (_position > 1) {
+            sum = fibonacci(_position - 1) + fibonacci(_position - 2);
+        }
+        else if (_position == 1) {
+            return 1;
+        } else if (_position == 0) {
+            return 0;
+        }
+        return sum;
     }
 }
