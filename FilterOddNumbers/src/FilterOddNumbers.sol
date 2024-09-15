@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: BUSL-1.1
 pragma solidity ^0.8.13;
 
+// Solution: You need to count for even numbers first and directly assign it to the new
+// array so you need an index, you cant use push unless the array is dynamic and stored in storage,
+// not in memory.
+
 contract FilterOddNumbers {
     /*
         This exercise assumes you understand how to manipulate Array.
