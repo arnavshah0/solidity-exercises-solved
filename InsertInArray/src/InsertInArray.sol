@@ -8,6 +8,10 @@ contract InsertInArray {
      * This function is to be used to set/override the value stored at particular index in the array above (named "arr")
      */
     function replaceAtIndex(uint256 index, uint256 newValue) public {
-        // your code here
+        for (uint i = 0; i < arr.length; i++) {
+            if (i == index) {
+                arr[i] = newValue;
+            }
+        }
     }
 }
